@@ -31,7 +31,22 @@
         --env NEO4J_ACCEPT_LICENSE_AGREEMENT=eval \
         neo4j:enterprise
 ```
+To include the *Neo4j Graph Data Science* (GDS) library (on any other plugin):
 
+```
+    docker run \
+        --name neo4j \
+        -p 7474:7474 -p7687:7687 \
+        -d \
+        -v $HOME/neo4j/data:/data \
+        -v $HOME/neo4j/logs:/logs \
+        -v $HOME/neo4j/import:/var/lib/neo4j/import \
+        -v $HOME/neo4j/plugins:/plugins \
+        --env NEO4J_AUTH=neo4j/password \
+        --env NEO4J_ACCEPT_LICENSE_AGREEMENT=eval \
+        --env NEO4J_PLUGINS='["graph-data-science"]' \
+        neo4j:enterprise
+```
 - Run service container
 ```
     docker run \
